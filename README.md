@@ -61,7 +61,7 @@ AI" reviewers and Erasmus Mundus admissions committees care about.
   while actually partly keying off acquisition artifacts rather than pathology. This is the paper's
   actual novel angle.
 - **Why ConvNeXt-Tiny via `timm`, not ResNet18?** `timm` is the standard library for pretrained
-  vision backbones in both industry and research. ConvNeXt (Liu et al., 2022) is a modern pure-conv
+  vision backbones in both industry and research. ConvNeXt is a modern pure-conv
   architecture that matches/beats Vision Transformers at comparable size while keeping the training
   stability and lower data requirements of CNNs — a defensible choice for a ~15k-image fine-tuning
   task where a ViT would be more data-hungry.
@@ -75,22 +75,17 @@ AI" reviewers and Erasmus Mundus admissions committees care about.
   free speed/memory on any modern GPU. Early stopping on val AUROC treats the epoch count as a
   ceiling, not a target, so training doesn't run past convergence.
 - **Why temperature scaling on top of AUROC?** AUROC measures ranking quality, not calibration — a
-  model can rank correctly while still being overconfident. Temperature scaling (Guo et al., 2017) is
+  model can rank correctly while still being overconfident. Temperature scaling  is
   fit post-hoc on the validation set and reported via Expected Calibration Error before/after, which
   is what "trustworthy AI" review actually expects beyond a bare accuracy number.
 - **Why Equalized Odds gap alongside the AUROC gap?** AUROC gaps summarize ranking-quality
-  differences across all thresholds; Equalized Odds (Hardt et al., 2016) reports the max difference
+  differences across all thresholds; Equalized Odds reports the max difference
   in true-positive/false-positive rate at the actual 0.5 decision threshold a clinician would see —
   the standard fairness-literature metric, and the two can disagree.
 - **Why Captum, not raw Grad-CAM from scratch or SHAP?** Captum is the maintained, PyTorch-native
   interpretability library (built by Meta), covers Grad-CAM AND Integrated Gradients with one
   consistent API, and is a legitimate, well-known tool you can defend in an interview without needing
   to explain three different libraries.
-- **Why not Docker/Hydra/MLflow/CI?** For a single-model, single-researcher project run in under two
-  weeks, that infrastructure is disproportionate to the task and becomes something you'd need to
-  justify, not something that adds credibility. Skipped deliberately — you can add these later on a
-  larger project if a supervisor asks for it.
-
 ---
 
 ## 1. Get the data (do this first, outside this codebase)
