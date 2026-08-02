@@ -1,5 +1,10 @@
 # Subgroup Bias & Failure-Mode Audit of a Chest X-ray Classifier
+## Citation
 
+If you reference this work, please cite:
+
+Islam, M. M. (2026). Subgroup Bias Audit of a Chest X-ray Classifier 
+(v1.0.1) [Software]. Zenodo. https://doi.org/10.5281/zenodo.21753602
 ## What this is, in plain terms
 
 **The problem.** AI can now look at a chest X-ray and guess whether a patient has certain diseases,
