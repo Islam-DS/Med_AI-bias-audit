@@ -1,0 +1,13 @@
+data/images/
+data/*.csv
+results/*.pt
+__pycache__/
+*.pyc
+venv/
+.venv/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.Rhistory
